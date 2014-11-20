@@ -1,13 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
 /**
- * ±¾ÌâÊÇÇóNÎ»ÔªµÄ¸ñÀ×Âë¡£Í¨¹ı¶ş½øÖÆÊı×ª¸ñÀ×ÂëµÄ¹æÂÉ¹«Ê½£º
- * G£º¸ñÀ×Âë B£º¶ş½øÖÆÂë  , G(N) = (B(n)>>1) XOR B(n)
- * ÒÆÎ»²Ù×÷+Òì»òÔËËã
+ * æœ¬é¢˜æ˜¯æ±‚Nä½å…ƒçš„æ ¼é›·ç ã€‚é€šè¿‡äºŒè¿›åˆ¶æ•°è½¬æ ¼é›·ç çš„è§„å¾‹å…¬å¼ï¼š
+ * Gï¼šæ ¼é›·ç  Bï¼šäºŒè¿›åˆ¶ç   , G(N) = (B(n)>>1) XOR B(n)
+ * ç§»ä½æ“ä½œ+å¼‚æˆ–è¿ç®—
  *
  */
 public class GrayCode {
-
 	public List<Integer> grayCode(int n) {
 		List<Integer> list = new ArrayList<Integer>(n);
 		int pow = (int) Math.pow(2, n);
