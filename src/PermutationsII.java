@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+//问：如何用DFS思想解？
 public class PermutationsII {
 	public ArrayList<ArrayList<Integer>> permuteUnique(int[] num) {
 		ArrayList<ArrayList<Integer>> returnList = new ArrayList<ArrayList<Integer>>();
