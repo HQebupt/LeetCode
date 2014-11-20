@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.List;
 /**
  * 本题是求N位元的格雷码。通过二进制数转格雷码的规律公式：
- * G：格雷码 B：二进制码  , G(N) = (B(n)/2) XOR B(n)
- * 除以2的运算转换成右移一位的移位操作
+ * G：格雷码 B：二进制码  , G(N) = (B(n)>>1) XOR B(n)
+ * 移位操作+异或运算
  *
  */
 public class GrayCode {
