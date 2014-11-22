@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 时间复杂度O(n),空间复杂度：O(n)
+ *
+ */
 public class TextJustification {
 	public List<String> fullJustify(String[] words, int L) {
 		int length = words.length;
