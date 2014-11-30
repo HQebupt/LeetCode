@@ -32,5 +32,9 @@ public class TreeNode {
 		left = null;
 		right = null;
 	}
+	
+	public String toString(){
+		return "" + val;
+	}
 
 }
