@@ -7,4 +7,6 @@ LeetCode
 
 第二遍A题的时候，考虑用python写，python可能方便手写代码.
 
-AC-50 By 2014.11.30
+### AC-50 By 2014.11.30
+
+Easy:13 Medium:28 Hard:9
