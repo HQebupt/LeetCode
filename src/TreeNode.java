@@ -32,9 +32,18 @@ public class TreeNode {
 		left = null;
 		right = null;
 	}
-	
-	public String toString(){
+
+	public String toString() {
 		return "" + val;
+	}
+
+	public String rightString() {
+		String r = "" + val;
+		while (right != null) {
+			r += "-" + right.val;
+			right = right.right;
+		}
+		return r;
 	}
 
 }
