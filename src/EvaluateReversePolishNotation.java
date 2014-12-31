@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 
+// Time: O(n)  Space: O(n)
 public class EvaluateReversePolishNotation  {
 	public int evalRPN(String[] tokens) {
 		LinkedList<Integer> ls = new LinkedList<Integer>();
