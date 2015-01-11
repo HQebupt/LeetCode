@@ -1,9 +1,10 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class SimplifyPath {
 	public String simplifyPath(String path) {
 		String[] words = path.split("/");
-		ArrayList<String> stack = new ArrayList<String>();
+		List<String> stack = new LinkedList<String>();
 		for (String s : words) {
 			if (s.equalsIgnoreCase("..")) {
 				if (!stack.isEmpty())
