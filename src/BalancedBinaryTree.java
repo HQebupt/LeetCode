@@ -1,16 +1,17 @@
 public class BalancedBinaryTree {
 	// DFS
-	// Time: O(n)  Space: O(logn)
+	// Time: O(n) Space: O(logn)
 	public boolean isBalanced(TreeNode root) {
 		return balancedHeight(root) >= 0;
 	}
 
 	// isBalanced return height of tree, Otherwise return -1.
 	private int balancedHeight(TreeNode root) {
-		if (root == null)
-			return 0;
+		// 终止
+		if (root == null) return 0;
 		int left = balancedHeight(root.left);
 		int right = balancedHeight(root.right);
+		// 剪枝
 		if (left < 0 || right < 0 || Math.abs(left - right) > 1)
 			return -1;
 		return Math.max(left, right) + 1;
