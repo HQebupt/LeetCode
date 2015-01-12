@@ -17,8 +17,8 @@ public class TreeNodeSolution {
 		List<Integer> preOrder = new ArrayList<Integer>();
 		if ((root != null) && (root.val != '#')) {
 			preOrder.add(root.val);
-			postorderRecursion(root.left);
-			postorderRecursion(root.right);
+			preorderRecursion(root.left);
+			preorderRecursion(root.right);
 		}
 		return preOrder;
 	}
@@ -26,9 +26,9 @@ public class TreeNodeSolution {
 	public List<Integer> inorderRecursion(TreeNode root) {
 		List<Integer> inOrder = new ArrayList<Integer>();
 		if ((root != null) && (root.val != '#')) {
-			postorderRecursion(root.left);
+			inorderRecursion(root.left);
 			inOrder.add(root.val);
-			postorderRecursion(root.right);
+			inorderRecursion(root.right);
 		}
 		return inOrder;
 	}
