@@ -11,3 +11,6 @@ LeetCode
 
 Easy:13 Medium:28 Hard:9
 ### AC-80 By 2014.12.31
+
+### AC-100 By 2015.1.14
+Easy:29 Medium:50 Hard:21
