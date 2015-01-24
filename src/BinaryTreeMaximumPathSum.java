@@ -1,17 +1,18 @@
-//时间复杂度：0（n) 空间复杂度：O（logn）
+// 时间复杂度：0（n) 空间复杂度：O（logn）
+// 相似题:最大连续子数组和
 public class BinaryTreeMaximumPathSum {
 	int max = Integer.MIN_VALUE;
 
 	public int maxPathSum(TreeNode root) {
-		maxPathBranch(root);
+		dfs(root);
 		return max;
 	}
 
-	public int maxPathBranch(TreeNode root) {
+	public int dfs(TreeNode root) {
 		if (root == null)
 			return 0;
-		int l = maxPathBranch(root.left);
-		int r = maxPathBranch(root.right);
+		int l = dfs(root.left);
+		int r = dfs(root.right);
 		int sum = root.val;
 		if (l > 0)
 			sum += l;
