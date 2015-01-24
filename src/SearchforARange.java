@@ -24,14 +24,13 @@ public class SearchforARange {
 	public int binarySearch(int[] A, int target) {
 		int low = 0;
 		int high = A.length - 1;
-		int mid = (low + high) / 2;
+		int mid = 0;
 		while (low <= high) {
+			mid = (low + high) >> 1;
 			if (target > A[mid]) {
 				low = mid + 1;
-				mid = (low + high) / 2;
 			} else if (target < A[mid]) {
 				high = mid - 1;
-				mid = (low + high) / 2;
 			} else
 				return mid;
 		}
