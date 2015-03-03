@@ -5,7 +5,7 @@ public class AddBinary {
 		char[] bc = new StringBuilder(b).reverse().toString().toCharArray();
 		int alen = ac.length;
 		int blen = bc.length;
-		StringBuffer res = new StringBuffer();
+		StringBuilder res = new StringBuilder();
 		int max = alen > blen ? alen : blen;
 		int carry = 0;
 		for (int i = 0; i < max; i++) {
@@ -13,19 +13,10 @@ public class AddBinary {
 			int bi = i < blen ? bc[i] - '0' : 0;
 			int sum = ai + bi + carry;
 			carry = sum / 2;
-			// System.out.println("ca:"+carry);
 			res.append((char) (sum % 2 + '0'));
 		}
 		if (carry == 1)
 			res.append('1');
 		return res.reverse().toString();
-	}
-
-	public static void main(String[] args) {
-		AddBinary sol = new AddBinary();
-		String a = "11";
-		String b = "1";
-		String res = sol.addBinary(a, b);
-		System.out.println(res);
 	}
 }
