@@ -18,14 +18,15 @@ public class ReverseLinkedListII {
 		for (int i = 0; i < m - 1; i++) {
 			prev = prev.next;
 		}
-		ListNode head2 = prev;
-		prev = head2.next;
-		ListNode cur = prev.next;
+		// 就地反转法
+		ListNode dummy2 = prev;
+		prev = dummy2.next;
+		ListNode pCur = prev.next;
 		for (int i = m - 1; i < n - 1; i++) {
-			prev.next = cur.next;
-			cur.next = head2.next;
-			head2.next = cur;
-			cur = prev.next;
+			prev.next = pCur.next;
+			pCur.next = dummy2.next;
+			dummy2.next = pCur;
+			pCur = prev.next;
 		}
 		return dummy.next;
 	}
