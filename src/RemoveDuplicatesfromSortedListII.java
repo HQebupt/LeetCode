@@ -9,34 +9,29 @@
  *     }
  * }
  */
-//时间复杂度:O(n) 空间复杂度O(1)
+// 时间复杂度:O(n) 空间复杂度O(1)
 public class RemoveDuplicatesfromSortedListII {
-    public ListNode deleteDuplicates(ListNode head) {
-        int val = Integer.MAX_VALUE;
-        ListNode dummy = new ListNode(-1);
-        ListNode tail = dummy;
-        ListNode pNex = head;
-        boolean flag = false;
-        while(pNex != null){
-        	if(val != pNex.val){
-        		if(!flag){
-        			tail.next = new ListNode(val);
-        			tail = tail.next;
-        			val = pNex.val;
-        			flag = false;
-        		}else{
-        			val = pNex.val;
-        			flag = false;
-        		}
-        	}else{
-        		flag = true;
-        	}
-        	pNex = pNex.next;
-        }
-        if(!flag)
-        	tail.next = new ListNode(val);
-        return dummy.next.next;
-    }
+	public ListNode deleteDuplicates(ListNode head) {
+	    if(head == null)
+	        return head;
+	    ListNode dummy = new ListNode(Integer.MAX_VALUE);
+	    dummy.next = head;
+	    ListNode prev = dummy;
+	    ListNode pCur = head;
+	    while (pCur != null)
+	    {
+	        while(pCur.next != null && prev.next.val == pCur.next.val){
+	            pCur = pCur.next;
+	        }
+	        if(prev.next == pCur){ // 找到单独的元素
+	            prev = prev.next;
+	        } else{ // 剔除重复的元素
+	            prev.next = pCur.next;
+	        }
+	        pCur = pCur.next;
+	    }
+	    return dummy.next;
+	}
     
     public static void main(String[] args) {
     	RemoveDuplicatesfromSortedListII sol = new RemoveDuplicatesfromSortedListII();

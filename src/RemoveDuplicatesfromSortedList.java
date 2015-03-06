@@ -14,13 +14,13 @@ public class RemoveDuplicatesfromSortedList {
     public ListNode deleteDuplicates(ListNode head) {
         ListNode dummy = new ListNode(Integer.MAX_VALUE);
         ListNode tail = dummy;
-        ListNode pNex = head;
-        while(pNex != null){
-        	if(tail.val != pNex.val){
-        		tail.next = pNex;
-        		tail = pNex;
+        ListNode pCur = head;
+        while(pCur != null){
+        	if(tail.val != pCur.val){
+        		tail.next = pCur;
+        		tail = pCur;
         	}
-        	pNex = pNex.next;
+        	pCur = pCur.next;
         }
         tail.next = null;
         return dummy.next;
