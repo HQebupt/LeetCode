@@ -8,6 +8,11 @@ public class LRUCache {
 
 	public LRUCache(int capacity) {
 		this.maxCapacity = capacity;
+		/*
+		 *int capacity 容量
+		 *int load factor 装载因子
+		 *boolean accessOrder 是否访问顺序排序
+		 */
 		this.linkedmap = new LinkedHashMap<Integer, Integer>(capacity, 1f, true);
 	}
 
