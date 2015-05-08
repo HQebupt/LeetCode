@@ -30,6 +30,28 @@ public class ReverseLinkedList {
 		return dummy.next;
 	}
 	
+	// Solution 3: recursively
+    ListNode dummy = new ListNode(-1);
+	public ListNode reverseListRecu(ListNode head) {
+		if (head == null) 
+			return head;
+		reverse(head);
+		return dummy.next;
+	}
+	
+	private void reverse(ListNode head){
+		ListNode first = head;
+		ListNode rest = first.next;
+		if(rest == null) {
+			dummy.next = first;
+			return;
+		}
+		reverse(rest);
+		first.next.next = first;
+		first.next = null;
+	}
+    
+	
 	public static void main(String[] args) {
 		ListNode n1 = new ListNode(1);
 		ListNode n2 = new ListNode(2);
