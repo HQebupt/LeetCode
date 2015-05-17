@@ -1,5 +1,15 @@
 package linkedin;
 
+/**
+ * first problem.
+ * 给乱序数组A，定义abs(A[p]-A[q]) {p<q且数组不包含A[p]与A[q]之间的其他值,A[p]可以等于A[q]}为p与q的距离，求数组的最小距离，要求O(nlogn)
+ */
+
+/**
+ * Second problem.
+ * 给乱序数组A，定义abs(p-q){p<q且数组不包含A[p]与A[q]之间的其他值，且A[p]!=A[q]}为p与q的距离，求数组的最大距离，要求O(nlogn)
+ */
+
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -31,10 +41,10 @@ public class DistanceMaxMin {
 		for (int i = 0; i < len; i++) {
 			aCombs[i] = new Comb(A[i], i);
 		}
-		Arrays.sort(aCombs,cmp);
-		
+		Arrays.sort(aCombs, cmp);
+
 		int max = Integer.MIN_VALUE;
-		for(int i = 1; i < len; i++) {
+		for (int i = 1; i < len; i++) {
 			int gap = Math.abs(aCombs[i].index - aCombs[i - 1].index);
 			max = max > gap ? max : gap;
 		}
@@ -52,7 +62,7 @@ public class DistanceMaxMin {
 
 	public static void main(String[] args) {
 		DistanceMaxMin sol = new DistanceMaxMin();
-		int[] A = { 1, 3, 5, 2};
+		int[] A = { 1, 3, 5, 2 };
 		System.out.println(sol.maxDistance(A));
 	}
 

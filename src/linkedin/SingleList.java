@@ -1,5 +1,10 @@
 package linkedin;
 
+/**
+ * 单链表求长度
+ * @author hadoop
+ * @date 2015-5-17
+ */
 public class SingleList {
 	int length(ListNode head) {
 		int len = 0;
