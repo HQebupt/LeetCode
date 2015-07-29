@@ -22,6 +22,7 @@ public class ListNode {
 		this.next = next;
 	}
 
+	@Override
 	public String toString() {
 		String str = "[" + val;
 		ListNode cur = next;

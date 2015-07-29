@@ -19,7 +19,8 @@ public class ListNode {
 	void setNode(ListNode next) {
 		this.next = next;
 	}
-
+	
+	@Override
 	public String toString() {
 		String str = "[" + val;
 		ListNode cur = next;
