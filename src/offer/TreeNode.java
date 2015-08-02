@@ -47,5 +47,13 @@ public class TreeNode {
 		}
 		return r;
 	}
+	public String leftString() {
+		String l = "" + val;
+		while (left != null) {
+			l += "-" + left.val;
+			left = left.left;
+		}
+		return l;
+	}
 
 }
