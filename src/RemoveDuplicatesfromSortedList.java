@@ -4,7 +4,7 @@ public class RemoveDuplicatesfromSortedList {
 		ListNode dummy = new ListNode(Integer.MAX_VALUE);
 		ListNode tail = dummy;
 		for (ListNode pCur = head; pCur != null; pCur = pCur.next) {
-			if ((tail.next == null) || (tail.val != pCur.val)) {
+			if ((tail.next == null) || (tail.val != pCur.val)) { // tail.next == null 可以有效解决第一个元素指向的问题。
 				tail.next = pCur;
 				tail = pCur;
 			}
