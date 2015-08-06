@@ -1,5 +1,7 @@
 public class DeleteNodeinaLinkedList {
 	/**
+	 * 思路: 用后面的val来覆盖前面的val，把最后一个节点删除掉。
+	 * 
 	 * Two Pointers的做法
 	 * - index：指向当前结果的最后一个节点
 	 * - pCur：遍历
