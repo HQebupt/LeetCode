@@ -4,23 +4,21 @@ import java.util.List;
 
 public class PathSumII {
 
-	public List<LinkedList<Integer>> pathSum(TreeNode root, int sum) {
-		ArrayList<LinkedList<Integer>> res = new ArrayList<LinkedList<Integer>>();
+	public List<List<Integer>> pathSum(TreeNode root, int sum) {
+		List<List<Integer>> res = new ArrayList<List<Integer>>();
 		LinkedList<Integer> cur = new LinkedList<Integer>();
 		pathSum(root, sum, cur, res);
 		return res;
 	}
 
 	private void pathSum(TreeNode root, int gap, LinkedList<Integer> cur,
-			ArrayList<LinkedList<Integer>> res) {
+			List<List<Integer>> res) {
 		if (root == null)
 			return;
 		cur.add(root.val);
-		if (root.left == null && root.right == null) {
-			if (gap == root.val) {
-				LinkedList<Integer> tmp = new LinkedList<Integer>(cur);
-				res.add(tmp);
-			}
+		if (root.left == null && root.right == null && (gap == root.val)) {
+			LinkedList<Integer> tmp = new LinkedList<Integer>(cur);
+			res.add(tmp);
 		} else {
 			pathSum(root.left, gap - root.val, cur, res);
 			pathSum(root.right, gap - root.val, cur, res);

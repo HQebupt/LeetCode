@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Definition for binary tree
@@ -11,12 +14,14 @@ import java.util.ArrayList;
  */
 //Time:O(n) Space:O(n)
 public class BinaryTreeLevelOrderTraversal {
+	// Solution 1： 从上往下层序遍历的递归做法
 	public ArrayList<ArrayList<Integer>> levelOrder(TreeNode root) {
 		ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
 		traverse(root, 1, res);
 		return res;
 	}
 	
+	// 从下往上的层序解法：把`从上往下遍历`的结果反转一下就ok了。
 	public ArrayList<ArrayList<Integer>> levelOrderBottom(TreeNode root) {
 		ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
 		traverse(root, 1, res);
@@ -40,6 +45,41 @@ public class BinaryTreeLevelOrderTraversal {
 		traverse(root.left, level + 1, res);
 		traverse(root.right, level + 1, res);
 	}
+	
+	// Solution 2: 宽度优先搜索
+	public List<List<Integer>> levelOrder2(TreeNode root) {
+		List<List<Integer>> res = new ArrayList<List<Integer>>();
+		Deque<TreeNode> deque = new LinkedList<TreeNode>();
+		List<Integer> tmp = new ArrayList<Integer>();
+		int lastNum = 1;
+		int curNum = 0;
+		if (root!=null) {
+			deque.add(root);
+		}
+		
+		while (!deque.isEmpty()) {
+			root = deque.pop();
+			lastNum--;
+			tmp.add(root.val);
+			
+			if (root.left != null) {
+				curNum++;
+				deque.add(root.left);
+			}
+			if (root.right != null) {
+				curNum++;
+				deque.add(root.right);
+			}
+			
+			if (lastNum == 0) {
+				res.add(tmp);
+				tmp = new ArrayList<Integer>();
+				lastNum = curNum;
+				curNum = 0;
+			}
+		}
+	    return res;
+	}
 
 	public static void main(String[] args) {
 		TreeNode t1 = new TreeNode(1);
@@ -48,7 +88,7 @@ public class BinaryTreeLevelOrderTraversal {
 		t1.left = t2;
 		t1.right = t3;
 		BinaryTreeLevelOrderTraversal sol = new BinaryTreeLevelOrderTraversal();
-		ArrayList<ArrayList<Integer>> res = sol.levelOrderBottom(t1);
+		List<List<Integer>> res = sol.levelOrder2(t1);
 		System.out.println(res);
 	}
 }

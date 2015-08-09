@@ -25,11 +25,9 @@ public class CombinationSumII {
 			if (gap < candidates[i])
 				return;
 			pre = candidates[i];
-			if (gap >= candidates[i]) {
-				sum.add(candidates[i]);
-				dfs(candidates, gap - candidates[i], i + 1, sum, result);
-				sum.remove(sum.size() - 1);
-			}
+			sum.add(candidates[i]);
+			dfs(candidates, gap - candidates[i], i + 1, sum, result);
+			sum.remove(sum.size() - 1);
 		}
 	}
 
