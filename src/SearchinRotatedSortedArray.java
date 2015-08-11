@@ -1,5 +1,6 @@
 public class SearchinRotatedSortedArray {
 	// Binary Search
+	// 用例子来探索，什么样的数会落在哪一个半边？
 	// Time: O(logn)  Space: O(1)
     public int search(int[] A, int target) {
         int low = 0;
