@@ -1,9 +1,5 @@
 package offer;
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-
 public class Solution37 {
 	/**
 	 * 两个指针的应用
@@ -61,7 +57,5 @@ public class Solution37 {
 		l4.next = l5;
 		l5.next = l6;
 		System.out.println(sol.findFirstCommonNode(l1, l4));
-		List<TreeNode> dq = new LinkedList<TreeNode>();
-		dq.
 	}
 }
