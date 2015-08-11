@@ -16,9 +16,8 @@ public class Searcha2DMatrix {
     	int columns = matrix[0].length;
         int low = 0;
         int high = rows * columns - 1;
-        int mid = 0;
         while (low <= high) {
-        	mid = (low + high) >> 1;
+        	int mid = (low + high) >> 1;
         	int r = mid / columns;
         	int c = mid % columns;
         	if (target == matrix[r][c])
