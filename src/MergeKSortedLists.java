@@ -1,34 +1,56 @@
 import java.util.List;
 
 public class MergeKSortedLists {
+	/**
+	 * 链表的归并排序：Time：O(nlogn)  Space：O(n)
+	 * 分治法（Divide and Conquer）的一个非常典型的应用。
+	 * @param lists 待归并的有序链表
+	 */
 	public ListNode mergeKLists(List<ListNode> lists) {
 		if (lists == null || lists.size() == 0)
 			return null;
-		return helper(lists, 0, lists.size() - 1);
+		return divideList(lists, 0, lists.size() - 1);
 	}
 
-	private ListNode helper(List<ListNode> lists, int l, int r) {
-		if (l < r) {
-			int m = (l + r) / 2;
-			return mergeTwoLists(helper(lists, l, m), helper(lists, m + 1, r));
+	/**
+	 *  归并排序的第二个阶段，划分子数组。
+	 * @param lists
+	 * @param left 左边界
+	 * @param right 右边界
+	 * @return 在数组中，由于数组的特殊性，没有返回值。
+	 */
+	private ListNode divideList(List<ListNode> lists, int left, int right) {
+		if (left < right) {
+			int mid = (left + right) >> 1;
+			ListNode l1 = divideList(lists, left, mid);
+			ListNode l2 = divideList(lists, mid + 1, right);
+			return mergeTwoLists(l1, l2);
+		} else {
+			return lists.get(left);
 		}
-		return lists.get(l);
 	}
-
+	
+	/**
+	 * 归并的第三个阶段：合并两个有序的数组
+	 */
 	public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-		ListNode headNode = new ListNode(0);
-		ListNode cur = headNode;
-		while (l1 != null && l2 != null) {
-			if (l1.val < l2.val) {
-				cur.next = l1;
-				l1 = l1.next;
+		ListNode dummy = new ListNode(-1);
+		ListNode tail = dummy, pa = l1, pb = l2;
+		while (pa != null && (pb != null)) {
+			if (pa.val < pb.val) {
+				tail.next = pa;
+				tail = pa;
+				pa = pa.next;
 			} else {
-				cur.next = l2;
-				l2 = l2.next;
+				tail.next = pb;
+				tail = pb;
+				pb = pb.next;
 			}
-			cur = cur.next;
 		}
-		cur.next = l1 != null ? l1 : l2;
-		return headNode.next;
+		if (pa != null)
+			tail.next = pa;
+		if (pb != null)
+			tail.next = pb;
+		return dummy.next;
 	}
 }
