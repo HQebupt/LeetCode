@@ -31,4 +31,46 @@ public class DecodeWays {
 		}
 		return dp[len];
 	}
+	
+	/**
+	 * 递归做法
+	 * @param s 输入的字符串
+	 * @param n 字符串数组的大小，若看成是数组的话，是数组的大小0...n-1
+	 * @return
+	 */
+	public int numDecodings2(String s, int n) {
+		if (n <= 1) 
+			return 1;
+		
+		boolean isNum = false;
+		if ((s.charAt(n - 2) <= '2') && (s.charAt(n - 1) <= '6')) 
+			isNum = true;
+		
+		return isNum ? numDecodings2(s, n - 1) + numDecodings2(s, n - 2) : numDecodings2(s, n - 1);
+	}
+	
+	public int numDecodings3(String s) {
+		int len = s.length();
+		if (len == 0) 
+			return 0;
+		int[] dp = new int[len + 1];
+		dp[0] = 1;
+		dp[1] = 1;
+		
+		for (int i = 2; i <= len; i++) {
+			boolean isLetter = false;
+			if(s.charAt(i - 2) <= '2' && (s.charAt(i - 1) <= '6')) {
+				isLetter = true;
+			}
+			dp[i] = (isLetter ? dp[i - 1] + dp[i - 2] : dp[i -1]);
+		}
+		return dp[len];
+	}
+	
+	public static void main(String[] args) {
+		DecodeWays sol = new DecodeWays();
+		String s = "1234";
+		int count = sol.numDecodings3(s);
+		System.out.println(count);
+	}
 }
