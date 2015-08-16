@@ -22,24 +22,22 @@ public class SingleNumberII {
     
     // Solution 2:
     // Time:O(n*32)  Space:O(1)
-    public int singleNumber2(int[] A) {
-    	int result = 0;
+    public int singleNumber1(int[] A) {
+    	int res = 0;
     	int[] count32 = new int[32];
     	for (int i = 0; i < 32; i++) {
     		for (int j = 0; j < A.length; j++) {
-    			int and = (A[j] >> i) & 1;
-    			if (and == 1)
-    				count32[i]++;
+    			count32[i] += ((A[j] >> i) & 1);
     		}
-    		result |= (count32[i] % 3) << i;
+    		res += (count32[i] % 3) << i;
     	}
-    	return result;
+    	return res;
     }
     
     public static void main(String[] args) {
     	SingleNumberII sol = new SingleNumberII();
     	int[] A = {1,1,1,2,2,2,10};
-    	System.out.println(sol.singleNumber2(A));
+    	System.out.println(sol.singleNumber1(A));
     	
     }
 }
