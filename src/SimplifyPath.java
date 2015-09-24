@@ -1,28 +1,29 @@
+import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
 
 public class SimplifyPath {
+	// stack思想
 	public String simplifyPath(String path) {
 		String[] words = path.split("/");
-		List<String> stack = new LinkedList<String>();
-		for (String s : words) {
-			if (s.equalsIgnoreCase("..")) {
+		Deque<String> stack = new LinkedList<String>();
+		for (String word : words) {
+			if (word.equals("..")) {
 				if (!stack.isEmpty())
-					stack.remove(stack.size() - 1);
-			} else if (!(s.length() == 0 || s.equalsIgnoreCase("."))) {
-				stack.add(s);
+					stack.removeLast();
+			} else if (!(word.length() == 0 || word.equals("."))) {
+				stack.addLast(word);
 			}
 		}
 		String res = "";
 		for (String s : stack) {
 			res += "/" + s;
 		}
-		return res.length() == 0 ? "/" : res;
+		return res.equals("") ? "/" : res;
 	}
 
 	public static void main(String[] args) {
 		SimplifyPath sol = new SimplifyPath();
-		String path = "/a/./b/../../c/";
+		String path = "/../";
 		System.out.println(sol.simplifyPath(path));
 	}
 }
