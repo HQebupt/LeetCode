@@ -17,7 +17,7 @@ public class ReverseLinkedList {
 		return dummy.next;
 	}
 
-	// 2.新建链表,头节点插入法
+	// 2.新建链表,头节点插入法 ***推荐做法***
 	public ListNode reverseList2(ListNode head) {
 		ListNode dummy = new ListNode(-1);
 		ListNode pCur = head;
