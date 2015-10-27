@@ -2,30 +2,33 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LongestSubstringWithoutRepeatingCharacters {
+	// HashMap + 左右滑动窗口的控制left&right
 	// Time:O(n)  Space:O(26) == O(1)
 	public int lengthOfLongestSubstring(String s) {
 		int len = s.length();
-		if (len == 0) 
-			return 0;
-		int max = Integer.MIN_VALUE;
-		Map<Character, Integer> alp = new HashMap<Character, Integer>(26);
-		int p1 = 0;
-		for (int i = 0; i < len - 1; i++) {
-			char c = s.charAt(i);
-			if (alp.containsKey(c) && (alp.get(c) >= p1)) {
-				max = Math.max(max, i - p1);
-				p1 = alp.get(c) + 1;
+		Map<Character, Integer> dict = new HashMap<Character, Integer>();
+		int left = 0, maxStart = 0, maxLen = 0;
+		
+		for (int right = 0; right < len; right++) {
+			char ch = s.charAt(right);
+			if (dict.containsKey(ch) && dict.get(ch) >= left) {
+				int local = right - left;
+				if (local > maxLen) {
+					maxLen = local;
+					maxStart = left;
+				}
+				left = dict.get(ch) + 1;
+			} else if (right == len - 1) {
+				int local = right - left + 1;
+				if (local > maxLen) {
+					maxLen = local;
+					maxStart = left;
+				}
 			}
-			alp.put(c, i);
+			dict.put(ch, right);
 		}
-		// 最后一个字符单独处理
-		char c = s.charAt(len - 1);
-		if (alp.containsKey(c) && (alp.get(c) >= p1)) {
-			max = Math.max(max, len - 1 - p1);
-		}else {
-			max = Math.max(max, len - p1);
-		}
-		return max;
+		// System.out.println(s.substring(maxStart, maxStart + maxLen));
+		return maxLen;
 	}
 	
 	public static void main(String[] args) {
