@@ -21,7 +21,7 @@ public class KthLargestElementinanArray {
 			if (index < goal) {
 				left = index + 1;
 			} else {
-				right = right - 1;
+				right = index - 1;
 			}
 			index = partition(nums, left, right);
 		}
