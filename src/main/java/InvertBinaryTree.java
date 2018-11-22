@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+
 public class InvertBinaryTree {
 	// 思路1和2是递归的思路
 	// Solution 1: Time O(n); Space O(n)
@@ -28,5 +30,43 @@ public class InvertBinaryTree {
 	}
 
 	// Solution 3：非递归的实现
-	// Todo
+	public void invertTree3(TreeNode root) {
+		LinkedList<TreeNode> s = new LinkedList<>();
+		LinkedList<Boolean> visit = new LinkedList<>();
+		TreeNode p = root;
+		if (p!= null) {
+			pushInStack(s, visit, p);
+		}
+		while (!s.isEmpty()) {
+			boolean flag = visit.peek();
+			if (!flag) {
+				TreeNode node = s.peek();
+				swapLeftRight(node);
+				visit.pop();
+				visit.push(Boolean.TRUE);
+				if (node.left != null) {
+					pushInStack(s, visit, node.left);
+				}
+				if (node.right != null) {
+					pushInStack(s, visit, node.right);
+				}
+			} else {
+				popOutStack(s, visit);
+			}
+		}
+
+	}
+	void swapLeftRight(TreeNode node) {
+		TreeNode tmp = node.left;
+		node.left = node.right;
+		node.right = tmp;
+	}
+	void pushInStack(LinkedList<TreeNode> s, LinkedList<Boolean> visit, TreeNode node) {
+		s.push(node);
+		visit.push(Boolean.FALSE);
+	}
+	void popOutStack(LinkedList<TreeNode> s, LinkedList<Boolean> visit) {
+		s.pop();
+		visit.pop();
+	}
 }
